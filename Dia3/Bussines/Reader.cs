@@ -8,35 +8,58 @@ namespace Bussines
         public static int[,] Lector(string file)
         {
             var buffer = new List<string>();
-            using var reader = File.OpenText(".\\datos.txt");
-            {
-                while (!reader.EndOfStream)
-                {
-                    buffer.Add(reader.ReadLine());
-                }
-            }
+            GetAllLines(buffer, file);
 
             int largo = buffer.Count;
             int ancho = buffer[0].Length;
             int veces = ((largo * 7) / ancho) + 1;
-            
+
             var result = new int[largo, ancho * veces];
             int i = 0;
-            foreach(var item in buffer)
+            foreach (var item in buffer)
             {
                 var temp = new int[ancho];
                 int itemp = 0;
-                foreach(var c in item)
+                foreach (var c in item)
                 {
                     temp[itemp++] = c == '.' ? 0 : 1;
                 }
                 int j = 0;
-                for(int jtemp=0;jtemp<veces;jtemp++)
+                for (int jtemp = 0; jtemp < veces; jtemp++)
                 {
-                    for(int k=0;k<ancho;k++)
+                    for (int k = 0; k < ancho; k++)
                     {
                         result[i, j++] = temp[k];
                     }
+                }
+                i++;
+            }
+            return result;
+        }
+
+        private static void GetAllLines(List<string> buffer, string file)
+        {
+            using var reader = File.OpenText(file);
+            while (!reader.EndOfStream)
+            {
+                buffer.Add(reader.ReadLine());
+            }
+        }
+
+        public static int[,] Lector2(string file)
+        {
+            var buffer = new List<string>();
+            GetAllLines(buffer, file);
+            var largo = buffer.Count;
+            var ancho = buffer[0].Length;
+            var result = new int[largo, ancho];
+            int i = 0;
+            foreach(var line in buffer)
+            {
+                int j = 0;
+                foreach(var c in line)
+                {
+                    result[i, j++] = c == '.' ? 0 : 1;
                 }
                 i++;
             }
