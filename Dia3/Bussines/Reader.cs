@@ -18,7 +18,7 @@ namespace Bussines
 
             int largo = buffer.Count;
             int ancho = buffer[0].Length;
-            int veces = ((largo * 3) / ancho) + 1;
+            int veces = ((largo * 7) / ancho) + 1;
             
             var result = new int[largo, ancho * veces];
             int i = 0;
