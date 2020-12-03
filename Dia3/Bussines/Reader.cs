@@ -46,24 +46,11 @@ namespace Bussines
             }
         }
 
-        public static int[,] Lector2(string file)
+        public static List<string> Lector2(string file)
         {
             var buffer = new List<string>();
             GetAllLines(buffer, file);
-            var largo = buffer.Count;
-            var ancho = buffer[0].Length;
-            var result = new int[largo, ancho];
-            int i = 0;
-            foreach(var line in buffer)
-            {
-                int j = 0;
-                foreach(var c in line)
-                {
-                    result[i, j++] = c == '.' ? 0 : 1;
-                }
-                i++;
-            }
-            return result;
+            return buffer;
         }
     }
 }
