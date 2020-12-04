@@ -1,4 +1,5 @@
 ﻿using System;
+using Bussines;
 
 namespace Consola
 {
@@ -6,7 +7,8 @@ namespace Consola
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var datos = Reader.Lector(".\\datos.txt");
+            Console.WriteLine($"Resultado {Reto4.Calcular1(datos)}");
         }
     }
 }
