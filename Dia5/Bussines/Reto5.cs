@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bussines
 {
@@ -40,10 +41,17 @@ namespace Bussines
 
         public static int Resuelve2(List<string> datos)
         {
+            var inicial = 6;
+            foreach(var dato in datos.OrderByDescending(x=>x.Replace("L","S")))
+            {
+                var temp = CalculaId(dato);
+                if (temp != inicial)
+                {
+                    return inicial;
+                }
+                inicial++;
+            }
             return 0;
-            /*var result = 7;
-            foreach(dato in datos.OrderByDescending(x=>x.Replace("L","S"))
-            */
         }
     }
 }

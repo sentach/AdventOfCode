@@ -12,13 +12,14 @@ namespace Consola
             var datos = Reader.Lector1(".\\datos.txt");
             Console.WriteLine($"Calcula mas {Reto5.Resuelve1(datos)}");
 
+            Console.WriteLine($"Resuelve 2 {Reto5.Resuelve2(datos)}");
             
-            
+            /*
             foreach (var dato in datos.OrderByDescending(x => x.Replace("L","S")))
             {
                 Console.WriteLine(dato);
             }
-            
+            */
         }
     }
 }
