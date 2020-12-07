@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bussines
 {
@@ -32,30 +30,23 @@ namespace Bussines
             return result.Count;
         }
 
-        public static int Resultado2(Dictionary<string, List<Bolsa>> datos, string bag)
+        public static long Resultado2(Dictionary<string, List<Bolsa>> datos, string bag)
         {
-            int result = 0;
-            foreach(var dato in datos[bag])
+            long result = 0;
+            foreach (var dato in datos[bag])
             {
-                result += Devuelve(datos, dato.Color, dato.Numero); 
+                result +=dato.Numero * Devuelve(datos, dato.Color);
             }
-
-            //result -= datos[bag].Sum(x => x.Numero);
-            
             return result;
         }
 
-        private static int Devuelve(Dictionary<string, List<Bolsa>> datos, string bag, int numero)
+        private static long Devuelve(Dictionary<string, List<Bolsa>> datos, string bag)
         {
-            if (datos[bag].Count == 0) {
-                Console.WriteLine(numero);
-                return numero; 
-            }
-
-            int result = 0;
-            foreach(var dato in datos[bag])
+            long result = 1;
+            
+            foreach (var dato in datos[bag])
             {
-                result += (dato.Numero * Devuelve(datos, dato.Color, dato.Numero));
+                result += dato.Numero * Devuelve(datos, dato.Color);
             }
             return result;
         }
