@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bussines;
+using System;
 
 namespace Consola
 {
@@ -6,7 +7,9 @@ namespace Consola
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var datos = Reader.Lector1(".\\datos.txt");
+            var exe = new Executer(datos);
+            Console.WriteLine($"El reto1 es {exe.Execute()}");
         }
     }
 }
