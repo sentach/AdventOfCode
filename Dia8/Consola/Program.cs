@@ -10,6 +10,8 @@ namespace Consola
             var datos = Reader.Lector1(".\\datos.txt");
             var exe = new Executer(datos);
             Console.WriteLine($"El reto1 es {exe.Execute()}");
+            
+            Console.WriteLine($"Solucion {exe.Solve2()}");
         }
     }
 }
